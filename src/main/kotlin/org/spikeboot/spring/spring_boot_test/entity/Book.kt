@@ -10,12 +10,11 @@ import javax.persistence.Table
 
 @Table(name = "book")
 @Entity
-data class Book (
+data class Book(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    var id:Long? = null,
-
+    val id: Long? = null,
 
     @Column(name = "book_name", nullable = false)
     val bookName: String? = null,
