@@ -1,0 +1,36 @@
+
+POST http://localhost:8080/api/restaurant
+Content-Type: application/json
+
+{   "address":
+  { "building": "123",
+    "coord": [ -123.123, 123.123 ],
+    "street": "Central",
+    "zipcode": "30400" },
+  "borough": "Manhattan",
+  "cuisine": "Ukraine",
+  "name": "Empire",
+  "restaurant_id": "0101010101" }
+
+
+###
+
+POST http://localhost:8080/react/api/book
+Content-Type: application/json
+
+{
+  "bookName":"Gang of Four",
+  "author":"GOF"
+}
+
+###
+
+#{
+#  "bookName":"Master and Margarite",
+#  "author":"Bulhakov"
+#}
+
+//{
+//  "bookName":"Metro 2033",
+//  "author":"Dmitry Glukhovsky"
+//}

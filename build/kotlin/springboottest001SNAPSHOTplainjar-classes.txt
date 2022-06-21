@@ -1,1 +1,0 @@
-/Users/vladyslav/Documents/Workspace/spring_boot_test/build/classes/kotlin/main/org/spikeboot/spring/spring_boot_test/SpringBootTestApplication.class:/Users/vladyslav/Documents/Workspace/spring_boot_test/build/classes/kotlin/main/org/spikeboot/spring/spring_boot_test/SpringBootTestApplicationKt.class

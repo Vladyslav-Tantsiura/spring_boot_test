@@ -1,5 +1,6 @@
 package org.spikeboot.spring.spring_boot_test.service
 
+import org.hibernate.boot.model.naming.IllegalIdentifierException
 import org.spikeboot.spring.spring_boot_test.mongo_documents.Restaurant
 import org.spikeboot.spring.spring_boot_test.repositories.RestaurantRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,13 +21,17 @@ class RestaurantService(
     fun findAllRestaurant() = restaurantRepository.findAll()
 
 
-    fun findByRestaurantId(restaurantId: String): List<Restaurant?>{
+    fun findByRestaurantId(restaurantId: String): List<Restaurant?> {
         val query = Query()
         query.addCriteria(Criteria.where("restaurant_id").`is`(restaurantId))
-
         return template.find(query)
     }
 
     fun saveNewRestaurant(restaurant: Restaurant) = restaurantRepository.insert(restaurant)
 
+    fun updateRestaurant(restaurant: Restaurant) {
+        restaurantRepository.save(restaurant)
+    }
+
+    fun deleteRestaurantById(restaurantId: String) = restaurantRepository.deleteById(restaurantId)
 }

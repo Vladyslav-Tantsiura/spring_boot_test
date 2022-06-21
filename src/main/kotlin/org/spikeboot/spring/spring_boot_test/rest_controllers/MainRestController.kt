@@ -15,6 +15,8 @@ class MainRestController(
     val restaurantService: RestaurantService
 ) {
 
+//    Books controllers
+
     @GetMapping("/book")
     fun getAllBooks() = bookService.findAllBooks()
 
@@ -31,9 +33,12 @@ class MainRestController(
     fun deleteBook(@PathVariable("id") id: Long) = bookService.deleteBookById(id)
 
 
+
+
+//    Restaurants controllers
+
     @GetMapping("/restaurant")
     fun getAllRestaurants(): List<Restaurant?> {
-//        restaurantService.getAllRestaurant()
 
 //    val restaurant = Restaurant(
 //        restaurant_id = "7777777",
@@ -49,6 +54,15 @@ class MainRestController(
         return restaurantService.findAllRestaurant()
     }
 
-    @GetMapping("/restaurant/{id}")
-    fun getRestaurantById(@RequestParam id:String) = restaurantService.findByRestaurantId(id)
+    @GetMapping("/restaurant/{restaurantId}")
+    fun getRestaurantById(@PathVariable restaurantId: String) = restaurantService.findByRestaurantId(restaurantId)
+
+    @PostMapping("/restaurant")
+    fun addNewRestaurant(@RequestBody restaurant: Restaurant) = restaurantService.saveNewRestaurant(restaurant)
+
+    @PutMapping("/restaurant")
+    fun updateRestaurant(@RequestBody restaurant: Restaurant) = restaurantService.updateRestaurant(restaurant)
+
+    @DeleteMapping("/restaurant/{restaurantId}")
+    fun deleteRestaurantById(@PathVariable restaurantId: String) = restaurantService.deleteRestaurantById(restaurantId)
 }

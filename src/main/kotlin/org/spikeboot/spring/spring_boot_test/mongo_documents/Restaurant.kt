@@ -30,5 +30,4 @@ data class Restaurant (
 
     @BsonProperty(value = "grades")
     val grades: List<Grade>? = null
-        ){
-}
+        )
