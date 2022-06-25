@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.toFlux
 import reactor.kotlin.core.publisher.toMono
+import java.time.Duration
 import java.time.LocalDateTime
 
 @RestController
@@ -39,13 +41,37 @@ class ReactiveController(
     fun errorPage() = Mono.error<Throwable>(IllegalStateException())
 
 
+    //    @GetMapping("/book")
+//    fun getAllBooks() = reactiveBookService.findAllBooksWithTemplate()
+
+
+
     @GetMapping("/book")
-    fun getAllBooks() = reactiveBookService.findAllBooksWithTemplate()
-//    : ArrayList<Book> {
-//        val list = ArrayList<Book>()
-//        reactiveBookService.findAllBooks().subscribe{list.add(it)}
+    fun getAllBooks(): Flux<Book> {
+
+        return reactiveBookService.findAllBooksWithTemplate()
+    }
+
+
+//    Get all elements with delay for each element
 //
-//        return list
+//    @GetMapping("/book")
+//    fun getAllBooks() = reactiveBookService
+//        .findAllBooksWithTemplate()
+//        .delayElements(Duration.ofSeconds(5))
+//        .collectList()
+
+//    @GetMapping("/book")
+//    fun getAllBooks(): ArrayList<Book> {
+//        val arrayList = ArrayList<Book>()
+//
+//        val abc = reactiveBookService.findAllBooksWithTemplate().map{it ->
+//            arrayList.add(it)
+//            it
+//        }
+//
+//        abc.log().blockLast()
+//        return arrayList
 //    }
 
     @GetMapping("/book/{id}")
@@ -53,8 +79,7 @@ class ReactiveController(
 
     @PostMapping("/book")
     fun addNewBook(@RequestBody book: Book): Flux<Book> {
-        book.year = LocalDateTime.now()
-       return reactiveBookService.insertBook(book)
+        return reactiveBookService.insertBook(book)
     }
 
 

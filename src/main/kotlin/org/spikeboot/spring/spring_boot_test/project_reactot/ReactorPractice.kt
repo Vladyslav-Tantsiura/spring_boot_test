@@ -59,7 +59,7 @@ class ReactorPractice {
     }
 
     fun monoWithErrorResume(mono: Mono<User>): Mono<User> {
-        return mono.onErrorResume { it -> Mono.just(User.SKYLER) }
+        return mono.onErrorResume { _ -> Mono.just(User.SKYLER) }
     }
 
 
@@ -78,10 +78,11 @@ class ReactorPractice {
     }
 }
 
-fun main() {
 
-    // Example using flatMap()
-
+//fun main() {
+//
+////    Example using flatMap()
+//
 //    val flux1 = Flux.just(User(null, null, null), User(null, null, null))
 //
 //    val flux2 = Flux.just(User(null, null, null), User(null, null, null))
@@ -91,7 +92,7 @@ fun main() {
 //    val result = ultimateFlux.flatMap { it }
 //
 //    result.subscribe(System.out::println)
-
-
-
-}
+//
+//
+//
+//}

@@ -1,11 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.google.protobuf.gradle.*
 
 plugins {
-	id("org.springframework.boot") version "2.7.0"
-	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.jpa") version "1.6.21"
+//	SpringBoot plugins
+    id("org.springframework.boot") version "2.7.0"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+
+//	gRPC proto plugin (for generation gRPC classes)
+    id("com.google.protobuf") version "0.8.18"
+
+    kotlin("jvm") version "1.6.21"
+    kotlin("plugin.spring") version "1.6.21"
+    kotlin("plugin.jpa") version "1.6.21"
+
+    application
 }
 
 group = "org.spikeboot.spring"
@@ -13,38 +21,106 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    google()
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+//	Project Reactor
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+//	Spring Data
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("org.projectlombok:lombok:1.18.22")
     runtimeOnly("org.postgresql:postgresql")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
+
+//	Tests dependencies
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test")
+
+//	gRPC dependencies
+    implementation("io.github.lognet:grpc-spring-boot-starter:4.7.1") // adding @GRpcService
+
+    implementation("com.google.protobuf:protobuf-kotlin:3.19.4")
+    api("io.grpc:grpc-protobuf:1.44.0")
+    api("com.google.protobuf:protobuf-java-util:3.19.4")
+    api("com.google.protobuf:protobuf-kotlin:3.19.4")
+    api("io.grpc:grpc-kotlin-stub:1.2.1")
+    api("io.grpc:grpc-stub:1.44.0")
+    runtimeOnly("io.grpc:grpc-netty:1.44.0")
+
+//    Reactive gRPC
+    implementation("com.salesforce.servicelibs:reactor-grpc:1.2.3")
+
+}
+
+// Set the Main class
+application {
+    mainClass.set("SpringBootTestApplicationKt")
+}
+
+// !!!Don't work if set sources!!!
+// Source directory for generated .proto files
+sourceSets {
+    main {
+        proto {
+            srcDirs("build/generated/source/proto/main/grpc")
+            srcDirs("build/generated/source/proto/main/grpckt")
+        }
+    }
+}
+
+// Configuration for protobuf builder
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.19.4"
+    }
+    plugins {
+        id("grpc") {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.44.0"
+        }
+        id("grpckt") {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.2.1:jdk7@jar"
+        }
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.plugins {
+                id("grpc")
+                id("grpckt")
+            }
+            it.builtins {
+                id("kotlin")
+            }
+        }
+    }
 }
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
-	}
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "11"
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+
+// This solves problem with
+// Entry .proto is a duplicate but no duplicate handling strategy has been set
+tasks.withType<Copy>().all {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

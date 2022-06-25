@@ -5,7 +5,6 @@ import org.bson.codecs.pojo.annotations.BsonProperty
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
-import java.time.Year
 
 @Data
 @Document(collection = "book")
@@ -19,6 +18,6 @@ data class Book(
     @BsonProperty("author")
     val author: String? = null,
 
-    @BsonProperty("year")
-    var year: LocalDateTime? = null
+//    @BsonProperty("year")
+//    var year: LocalDateTime? = null
 )

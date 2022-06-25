@@ -1,23 +1,21 @@
 package org.spikeboot.spring.spring_boot_test.service
 
 import org.spikeboot.spring.spring_boot_test.mongo_documents.Book
-import org.spikeboot.spring.spring_boot_test.repositories.ReactiveBookRepository
+import org.spikeboot.spring.spring_boot_test.repositories.ReactiveMongoBookRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
-import java.time.Year
 
 @Service
 class ReactiveBookService(
     @Autowired
-    val reactiveBookRepository: ReactiveBookRepository,
+    val reactiveMongoBookRepository: ReactiveMongoBookRepository,
     val reactiveMongoTemplate: ReactiveMongoTemplate
 ) {
 
-    fun insertBook(book: Book) = reactiveBookRepository.insert(book.toMono())
+    fun insertBook(book: Book) = reactiveMongoBookRepository.insert(book.toMono())
 
     fun saveWithTemplate(book: Mono<Book>) = reactiveMongoTemplate.save(book)
 
@@ -27,9 +25,9 @@ class ReactiveBookService(
 
     fun findAllBooksWithTemplate() = reactiveMongoTemplate.findAll(Book::class.java)
 
-    fun findAllBooks() = reactiveBookRepository.findAll()
+    fun findAllBooks() = reactiveMongoBookRepository.findAll()
 
-    fun findBookById(id: String) = reactiveBookRepository.findById(Mono.just(id))
+    fun findBookById(id: String) = reactiveMongoBookRepository.findById(id.toMono())
 
 
 }

@@ -123,19 +123,15 @@ internal class ReactorPracticeTest {
             .verify()
     }
 
-    @Test
-    fun toMonoTest(){
-        val instanceBook = Book(bookName = "Alice in wonderland", author = "Lewis Carrol", year = Year.parse("1865"))
-
-        StepVerifier
-            .create(instanceBook.toMono().log())
-            .expectNext(Book(bookName = "Alice in wonderland", author = "Lewis Carrol", year = Year.parse("1865")))
-
-    }
-
-
-
-
+//    @Test
+//    fun toMonoTest(){
+//        val instanceBook = Book(bookName = "Alice in wonderland", author = "Lewis Carrol", year = Year.parse("1865"))
+//
+//        StepVerifier
+//            .create(instanceBook.toMono().log())
+//            .expectNext(Book(bookName = "Alice in wonderland", author = "Lewis Carrol", year = Year.parse("1865")))
+//
+//    }
 
 
 

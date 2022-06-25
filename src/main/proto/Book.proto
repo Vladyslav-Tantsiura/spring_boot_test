@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package org.spikeboot.grpc;
+
+message Book{
+  string id = 1;
+  string bookName = 2;
+  string author = 3;
+}
+
+message Empty{
+
+}
+
+message SucceedResponse{
+  bool succeeded = 1;
+  string error = 2;
+}
+
+service BookMongoService{
+  rpc addNewBook(Book) returns (SucceedResponse);
+  rpc editExistBook(Book) returns (SucceedResponse);
+  rpc findAllBook(Empty) returns (stream Book);
+  rpc saveAllBooks(stream Book) returns (SucceedResponse);
+}

@@ -2,7 +2,7 @@ package org.spikeboot.spring.spring_boot_test.rest_controllers
 
 import org.spikeboot.spring.spring_boot_test.entity.Book
 import org.spikeboot.spring.spring_boot_test.mongo_documents.Restaurant
-import org.spikeboot.spring.spring_boot_test.service.BookService
+import org.spikeboot.spring.spring_boot_test.service.JpaBookService
 import org.spikeboot.spring.spring_boot_test.service.RestaurantService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api")
 class MainRestController(
     @Autowired
-    val bookService: BookService,
+    val jpaBookService: JpaBookService,
     val restaurantService: RestaurantService
 ) {
 
 //    Books controllers
 
     @GetMapping("/book")
-    fun getAllBooks() = bookService.findAllBooks()
+    fun getAllBooks() = jpaBookService.findAllBooks()
 
     @GetMapping("/book/{id}")
-    fun getBookById(@PathVariable id: Long) = bookService.findBookById(id)
+    fun getBookById(@PathVariable id: Long) = jpaBookService.findBookById(id)
 
     @PostMapping("/book")
-    fun addNewBook(@RequestBody book: Book) = bookService.saveOrUpdateBook(book)
+    fun addNewBook(@RequestBody book: Book) = jpaBookService.saveNewBook(book)
 
     @PutMapping("/book")
-    fun UpdateBook(@RequestBody book: Book) = bookService.saveOrUpdateBook(book)
+    fun UpdateBook(@RequestBody book: Book) = jpaBookService.saveNewBook(book)
 
     @DeleteMapping("/book/{id}")
-    fun deleteBook(@PathVariable("id") id: Long) = bookService.deleteBookById(id)
+    fun deleteBook(@PathVariable("id") id: Long) = jpaBookService.deleteBookById(id)
 
 
 
