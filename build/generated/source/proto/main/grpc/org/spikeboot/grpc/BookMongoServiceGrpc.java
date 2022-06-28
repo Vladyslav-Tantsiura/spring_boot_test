@@ -47,57 +47,57 @@ public final class BookMongoServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Book,
-      org.spikeboot.grpc.BookOuterClass.SucceedResponse> getEditExistBookMethod;
+      org.spikeboot.grpc.BookOuterClass.SucceedResponse> getExistsBookMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "editExistBook",
+      fullMethodName = SERVICE_NAME + '/' + "existsBook",
       requestType = org.spikeboot.grpc.BookOuterClass.Book.class,
       responseType = org.spikeboot.grpc.BookOuterClass.SucceedResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Book,
-      org.spikeboot.grpc.BookOuterClass.SucceedResponse> getEditExistBookMethod() {
-    io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Book, org.spikeboot.grpc.BookOuterClass.SucceedResponse> getEditExistBookMethod;
-    if ((getEditExistBookMethod = BookMongoServiceGrpc.getEditExistBookMethod) == null) {
+      org.spikeboot.grpc.BookOuterClass.SucceedResponse> getExistsBookMethod() {
+    io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Book, org.spikeboot.grpc.BookOuterClass.SucceedResponse> getExistsBookMethod;
+    if ((getExistsBookMethod = BookMongoServiceGrpc.getExistsBookMethod) == null) {
       synchronized (BookMongoServiceGrpc.class) {
-        if ((getEditExistBookMethod = BookMongoServiceGrpc.getEditExistBookMethod) == null) {
-          BookMongoServiceGrpc.getEditExistBookMethod = getEditExistBookMethod =
+        if ((getExistsBookMethod = BookMongoServiceGrpc.getExistsBookMethod) == null) {
+          BookMongoServiceGrpc.getExistsBookMethod = getExistsBookMethod =
               io.grpc.MethodDescriptor.<org.spikeboot.grpc.BookOuterClass.Book, org.spikeboot.grpc.BookOuterClass.SucceedResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "editExistBook"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "existsBook"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   org.spikeboot.grpc.BookOuterClass.Book.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   org.spikeboot.grpc.BookOuterClass.SucceedResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BookMongoServiceMethodDescriptorSupplier("editExistBook"))
+              .setSchemaDescriptor(new BookMongoServiceMethodDescriptorSupplier("existsBook"))
               .build();
         }
       }
     }
-    return getEditExistBookMethod;
+    return getExistsBookMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Empty,
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       org.spikeboot.grpc.BookOuterClass.Book> getFindAllBookMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "findAllBook",
-      requestType = org.spikeboot.grpc.BookOuterClass.Empty.class,
+      requestType = com.google.protobuf.Empty.class,
       responseType = org.spikeboot.grpc.BookOuterClass.Book.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Empty,
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       org.spikeboot.grpc.BookOuterClass.Book> getFindAllBookMethod() {
-    io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.Empty, org.spikeboot.grpc.BookOuterClass.Book> getFindAllBookMethod;
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, org.spikeboot.grpc.BookOuterClass.Book> getFindAllBookMethod;
     if ((getFindAllBookMethod = BookMongoServiceGrpc.getFindAllBookMethod) == null) {
       synchronized (BookMongoServiceGrpc.class) {
         if ((getFindAllBookMethod = BookMongoServiceGrpc.getFindAllBookMethod) == null) {
           BookMongoServiceGrpc.getFindAllBookMethod = getFindAllBookMethod =
-              io.grpc.MethodDescriptor.<org.spikeboot.grpc.BookOuterClass.Empty, org.spikeboot.grpc.BookOuterClass.Book>newBuilder()
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, org.spikeboot.grpc.BookOuterClass.Book>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findAllBook"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.spikeboot.grpc.BookOuterClass.Empty.getDefaultInstance()))
+                  com.google.protobuf.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   org.spikeboot.grpc.BookOuterClass.Book.getDefaultInstance()))
               .setSchemaDescriptor(new BookMongoServiceMethodDescriptorSupplier("findAllBook"))
@@ -137,6 +137,37 @@ public final class BookMongoServiceGrpc {
       }
     }
     return getSaveAllBooksMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest,
+      org.spikeboot.grpc.BookOuterClass.Book> getGetBooksByNameMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getBooksByName",
+      requestType = org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest.class,
+      responseType = org.spikeboot.grpc.BookOuterClass.Book.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest,
+      org.spikeboot.grpc.BookOuterClass.Book> getGetBooksByNameMethod() {
+    io.grpc.MethodDescriptor<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest, org.spikeboot.grpc.BookOuterClass.Book> getGetBooksByNameMethod;
+    if ((getGetBooksByNameMethod = BookMongoServiceGrpc.getGetBooksByNameMethod) == null) {
+      synchronized (BookMongoServiceGrpc.class) {
+        if ((getGetBooksByNameMethod = BookMongoServiceGrpc.getGetBooksByNameMethod) == null) {
+          BookMongoServiceGrpc.getGetBooksByNameMethod = getGetBooksByNameMethod =
+              io.grpc.MethodDescriptor.<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest, org.spikeboot.grpc.BookOuterClass.Book>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getBooksByName"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.spikeboot.grpc.BookOuterClass.Book.getDefaultInstance()))
+              .setSchemaDescriptor(new BookMongoServiceMethodDescriptorSupplier("getBooksByName"))
+              .build();
+        }
+      }
+    }
+    return getGetBooksByNameMethod;
   }
 
   /**
@@ -196,14 +227,14 @@ public final class BookMongoServiceGrpc {
 
     /**
      */
-    public void editExistBook(org.spikeboot.grpc.BookOuterClass.Book request,
+    public void existsBook(org.spikeboot.grpc.BookOuterClass.Book request,
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEditExistBookMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExistsBookMethod(), responseObserver);
     }
 
     /**
      */
-    public void findAllBook(org.spikeboot.grpc.BookOuterClass.Empty request,
+    public void findAllBook(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindAllBookMethod(), responseObserver);
     }
@@ -213,6 +244,13 @@ public final class BookMongoServiceGrpc {
     public io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book> saveAllBooks(
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSaveAllBooksMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest> getBooksByName(
+        io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getGetBooksByNameMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -225,17 +263,17 @@ public final class BookMongoServiceGrpc {
                 org.spikeboot.grpc.BookOuterClass.SucceedResponse>(
                   this, METHODID_ADD_NEW_BOOK)))
           .addMethod(
-            getEditExistBookMethod(),
+            getExistsBookMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 org.spikeboot.grpc.BookOuterClass.Book,
                 org.spikeboot.grpc.BookOuterClass.SucceedResponse>(
-                  this, METHODID_EDIT_EXIST_BOOK)))
+                  this, METHODID_EXISTS_BOOK)))
           .addMethod(
             getFindAllBookMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                org.spikeboot.grpc.BookOuterClass.Empty,
+                com.google.protobuf.Empty,
                 org.spikeboot.grpc.BookOuterClass.Book>(
                   this, METHODID_FIND_ALL_BOOK)))
           .addMethod(
@@ -245,6 +283,13 @@ public final class BookMongoServiceGrpc {
                 org.spikeboot.grpc.BookOuterClass.Book,
                 org.spikeboot.grpc.BookOuterClass.SucceedResponse>(
                   this, METHODID_SAVE_ALL_BOOKS)))
+          .addMethod(
+            getGetBooksByNameMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest,
+                org.spikeboot.grpc.BookOuterClass.Book>(
+                  this, METHODID_GET_BOOKS_BY_NAME)))
           .build();
     }
   }
@@ -273,15 +318,15 @@ public final class BookMongoServiceGrpc {
 
     /**
      */
-    public void editExistBook(org.spikeboot.grpc.BookOuterClass.Book request,
+    public void existsBook(org.spikeboot.grpc.BookOuterClass.Book request,
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getEditExistBookMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getExistsBookMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void findAllBook(org.spikeboot.grpc.BookOuterClass.Empty request,
+    public void findAllBook(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getFindAllBookMethod(), getCallOptions()), request, responseObserver);
@@ -293,6 +338,14 @@ public final class BookMongoServiceGrpc {
         io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getSaveAllBooksMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest> getBooksByName(
+        io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getGetBooksByNameMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -319,15 +372,15 @@ public final class BookMongoServiceGrpc {
 
     /**
      */
-    public org.spikeboot.grpc.BookOuterClass.SucceedResponse editExistBook(org.spikeboot.grpc.BookOuterClass.Book request) {
+    public org.spikeboot.grpc.BookOuterClass.SucceedResponse existsBook(org.spikeboot.grpc.BookOuterClass.Book request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getEditExistBookMethod(), getCallOptions(), request);
+          getChannel(), getExistsBookMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public java.util.Iterator<org.spikeboot.grpc.BookOuterClass.Book> findAllBook(
-        org.spikeboot.grpc.BookOuterClass.Empty request) {
+        com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getFindAllBookMethod(), getCallOptions(), request);
     }
@@ -357,17 +410,18 @@ public final class BookMongoServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.spikeboot.grpc.BookOuterClass.SucceedResponse> editExistBook(
+    public com.google.common.util.concurrent.ListenableFuture<org.spikeboot.grpc.BookOuterClass.SucceedResponse> existsBook(
         org.spikeboot.grpc.BookOuterClass.Book request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getEditExistBookMethod(), getCallOptions()), request);
+          getChannel().newCall(getExistsBookMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_ADD_NEW_BOOK = 0;
-  private static final int METHODID_EDIT_EXIST_BOOK = 1;
+  private static final int METHODID_EXISTS_BOOK = 1;
   private static final int METHODID_FIND_ALL_BOOK = 2;
   private static final int METHODID_SAVE_ALL_BOOKS = 3;
+  private static final int METHODID_GET_BOOKS_BY_NAME = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -390,12 +444,12 @@ public final class BookMongoServiceGrpc {
           serviceImpl.addNewBook((org.spikeboot.grpc.BookOuterClass.Book) request,
               (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse>) responseObserver);
           break;
-        case METHODID_EDIT_EXIST_BOOK:
-          serviceImpl.editExistBook((org.spikeboot.grpc.BookOuterClass.Book) request,
+        case METHODID_EXISTS_BOOK:
+          serviceImpl.existsBook((org.spikeboot.grpc.BookOuterClass.Book) request,
               (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse>) responseObserver);
           break;
         case METHODID_FIND_ALL_BOOK:
-          serviceImpl.findAllBook((org.spikeboot.grpc.BookOuterClass.Empty) request,
+          serviceImpl.findAllBook((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book>) responseObserver);
           break;
         default:
@@ -411,6 +465,9 @@ public final class BookMongoServiceGrpc {
         case METHODID_SAVE_ALL_BOOKS:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.saveAllBooks(
               (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.SucceedResponse>) responseObserver);
+        case METHODID_GET_BOOKS_BY_NAME:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.getBooksByName(
+              (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -463,9 +520,10 @@ public final class BookMongoServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BookMongoServiceFileDescriptorSupplier())
               .addMethod(getAddNewBookMethod())
-              .addMethod(getEditExistBookMethod())
+              .addMethod(getExistsBookMethod())
               .addMethod(getFindAllBookMethod())
               .addMethod(getSaveAllBooksMethod())
+              .addMethod(getGetBooksByNameMethod())
               .build();
         }
       }

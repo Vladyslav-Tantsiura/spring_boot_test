@@ -1,5 +1,6 @@
 package org.spikeboot.grpc
 
+import com.google.protobuf.Empty
 import io.grpc.CallOptions
 import io.grpc.CallOptions.DEFAULT
 import io.grpc.Channel
@@ -14,10 +15,12 @@ import io.grpc.StatusException
 import io.grpc.kotlin.AbstractCoroutineServerImpl
 import io.grpc.kotlin.AbstractCoroutineStub
 import io.grpc.kotlin.ClientCalls
+import io.grpc.kotlin.ClientCalls.bidiStreamingRpc
 import io.grpc.kotlin.ClientCalls.clientStreamingRpc
 import io.grpc.kotlin.ClientCalls.serverStreamingRpc
 import io.grpc.kotlin.ClientCalls.unaryRpc
 import io.grpc.kotlin.ServerCalls
+import io.grpc.kotlin.ServerCalls.bidiStreamingServerMethodDefinition
 import io.grpc.kotlin.ServerCalls.clientStreamingServerMethodDefinition
 import io.grpc.kotlin.ServerCalls.serverStreamingServerMethodDefinition
 import io.grpc.kotlin.ServerCalls.unaryServerMethodDefinition
@@ -44,17 +47,22 @@ object BookMongoServiceGrpcKt {
     @JvmStatic
     get() = BookMongoServiceGrpc.getAddNewBookMethod()
 
-  val editExistBookMethod: MethodDescriptor<BookOuterClass.Book, BookOuterClass.SucceedResponse>
+  val existsBookMethod: MethodDescriptor<BookOuterClass.Book, BookOuterClass.SucceedResponse>
     @JvmStatic
-    get() = BookMongoServiceGrpc.getEditExistBookMethod()
+    get() = BookMongoServiceGrpc.getExistsBookMethod()
 
-  val findAllBookMethod: MethodDescriptor<BookOuterClass.Empty, BookOuterClass.Book>
+  val findAllBookMethod: MethodDescriptor<Empty, BookOuterClass.Book>
     @JvmStatic
     get() = BookMongoServiceGrpc.getFindAllBookMethod()
 
   val saveAllBooksMethod: MethodDescriptor<BookOuterClass.Book, BookOuterClass.SucceedResponse>
     @JvmStatic
     get() = BookMongoServiceGrpc.getSaveAllBooksMethod()
+
+  val getBooksByNameMethod: MethodDescriptor<BookOuterClass.GetBooksByNameRequest,
+      BookOuterClass.Book>
+    @JvmStatic
+    get() = BookMongoServiceGrpc.getGetBooksByNameMethod()
 
   /**
    * A stub for issuing RPCs to a(n) org.spikeboot.grpc.BookMongoService service as suspending
@@ -100,10 +108,10 @@ object BookMongoServiceGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun editExistBook(request: BookOuterClass.Book, headers: Metadata = Metadata()):
+    suspend fun existsBook(request: BookOuterClass.Book, headers: Metadata = Metadata()):
         BookOuterClass.SucceedResponse = unaryRpc(
       channel,
-      BookMongoServiceGrpc.getEditExistBookMethod(),
+      BookMongoServiceGrpc.getExistsBookMethod(),
       request,
       callOptions,
       headers
@@ -121,8 +129,8 @@ object BookMongoServiceGrpcKt {
      *
      * @return A flow that, when collected, emits the responses from the server.
      */
-    fun findAllBook(request: BookOuterClass.Empty, headers: Metadata = Metadata()):
-        Flow<BookOuterClass.Book> = serverStreamingRpc(
+    fun findAllBook(request: Empty, headers: Metadata = Metadata()): Flow<BookOuterClass.Book> =
+        serverStreamingRpc(
       channel,
       BookMongoServiceGrpc.getFindAllBookMethod(),
       request,
@@ -154,6 +162,34 @@ object BookMongoServiceGrpcKt {
       requests,
       callOptions,
       headers
+    )
+    /**
+     * Returns a [Flow] that, when collected, executes this RPC and emits responses from the
+     * server as they arrive.  That flow finishes normally if the server closes its response with
+     * [`Status.OK`][Status], and fails by throwing a [StatusException] otherwise.  If
+     * collecting the flow downstream fails exceptionally (including via cancellation), the RPC
+     * is cancelled with that exception as a cause.
+     *
+     * The [Flow] of requests is collected once each time the [Flow] of responses is
+     * collected. If collection of the [Flow] of responses completes normally or
+     * exceptionally before collection of `requests` completes, the collection of
+     * `requests` is cancelled.  If the collection of `requests` completes
+     * exceptionally for any other reason, then the collection of the [Flow] of responses
+     * completes exceptionally for the same reason and the RPC is cancelled with that reason.
+     *
+     * @param requests A [Flow] of request messages.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return A flow that, when collected, emits the responses from the server.
+     */
+    fun getBooksByName(requests: Flow<BookOuterClass.GetBooksByNameRequest>, headers: Metadata =
+        Metadata()): Flow<BookOuterClass.Book> = bidiStreamingRpc(
+      channel,
+      BookMongoServiceGrpc.getGetBooksByNameMethod(),
+      requests,
+      callOptions,
+      headers
     )}
 
   /**
@@ -179,7 +215,7 @@ object BookMongoServiceGrpcKt {
         StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.addNewBook is unimplemented"))
 
     /**
-     * Returns the response to an RPC for org.spikeboot.grpc.BookMongoService.editExistBook.
+     * Returns the response to an RPC for org.spikeboot.grpc.BookMongoService.existsBook.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -189,9 +225,9 @@ object BookMongoServiceGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun editExistBook(request: BookOuterClass.Book): BookOuterClass.SucceedResponse =
+    open suspend fun existsBook(request: BookOuterClass.Book): BookOuterClass.SucceedResponse =
         throw
-        StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.editExistBook is unimplemented"))
+        StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.existsBook is unimplemented"))
 
     /**
      * Returns a [Flow] of responses to an RPC for org.spikeboot.grpc.BookMongoService.findAllBook.
@@ -205,7 +241,7 @@ object BookMongoServiceGrpcKt {
      *
      * @param request The request from the client.
      */
-    open fun findAllBook(request: BookOuterClass.Empty): Flow<BookOuterClass.Book> = throw
+    open fun findAllBook(request: Empty): Flow<BookOuterClass.Book> = throw
         StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.findAllBook is unimplemented"))
 
     /**
@@ -226,6 +262,26 @@ object BookMongoServiceGrpcKt {
         BookOuterClass.SucceedResponse = throw
         StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.saveAllBooks is unimplemented"))
 
+    /**
+     * Returns a [Flow] of responses to an RPC for
+     * org.spikeboot.grpc.BookMongoService.getBooksByName.
+     *
+     * If creating or collecting the returned flow fails with a [StatusException], the RPC
+     * will fail with the corresponding [Status].  If it fails with a
+     * [java.util.concurrent.CancellationException], the RPC will fail with status
+     * `Status.CANCELLED`.  If creating
+     * or collecting the returned flow fails for any other reason, the RPC will fail with
+     * `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param requests A [Flow] of requests from the client.  This flow can be
+     *        collected only once and throws [java.lang.IllegalStateException] on attempts to
+     * collect
+     *        it more than once.
+     */
+    open fun getBooksByName(requests: Flow<BookOuterClass.GetBooksByNameRequest>):
+        Flow<BookOuterClass.Book> = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method org.spikeboot.grpc.BookMongoService.getBooksByName is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition = builder(getServiceDescriptor())
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
@@ -234,8 +290,8 @@ object BookMongoServiceGrpcKt {
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = BookMongoServiceGrpc.getEditExistBookMethod(),
-      implementation = ::editExistBook
+      descriptor = BookMongoServiceGrpc.getExistsBookMethod(),
+      implementation = ::existsBook
     ))
       .addMethod(serverStreamingServerMethodDefinition(
       context = this.context,
@@ -246,6 +302,11 @@ object BookMongoServiceGrpcKt {
       context = this.context,
       descriptor = BookMongoServiceGrpc.getSaveAllBooksMethod(),
       implementation = ::saveAllBooks
+    ))
+      .addMethod(bidiStreamingServerMethodDefinition(
+      context = this.context,
+      descriptor = BookMongoServiceGrpc.getGetBooksByNameMethod(),
+      implementation = ::getBooksByName
     )).build()
   }
 }

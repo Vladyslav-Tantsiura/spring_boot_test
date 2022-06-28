@@ -62,6 +62,7 @@ dependencies {
 
 //    Reactive gRPC
     implementation("com.salesforce.servicelibs:reactor-grpc:1.2.3")
+    implementation("com.salesforce.servicelibs:reactor-grpc-stub:1.2.3")
 
 }
 
@@ -70,35 +71,36 @@ application {
     mainClass.set("SpringBootTestApplicationKt")
 }
 
-// !!!Don't work if set sources!!!
-// Source directory for generated .proto files
-sourceSets {
-    main {
-        proto {
-            srcDirs("build/generated/source/proto/main/grpc")
-            srcDirs("build/generated/source/proto/main/grpckt")
-        }
-    }
-}
-
 // Configuration for protobuf builder
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.19.4"
     }
+
+//    Base gRPC plugins
     plugins {
+//        Java gRPC plugin
         id("grpc") {
             artifact = "io.grpc:protoc-gen-grpc-java:1.44.0"
         }
+
+//        Kotlin gRPC plugin
         id("grpckt") {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.2.1:jdk7@jar"
         }
+
+//        Reactive gRPC plugin
+        id("reactor") {
+            artifact = "com.salesforce.servicelibs:reactor-grpc:1.2.3"
+        }
     }
+
     generateProtoTasks {
         all().forEach {
             it.plugins {
                 id("grpc")
                 id("grpckt")
+                id("reactor")
             }
             it.builtins {
                 id("kotlin")
@@ -120,7 +122,19 @@ tasks.withType<Test> {
 
 
 // This solves problem with
-// Entry .proto is a duplicate but no duplicate handling strategy has been set
+// "Entry .proto is a duplicate but no duplicate handling strategy has been set"
 tasks.withType<Copy>().all {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+
+
+// ???Doesn't need, just mark proto directory like source root???
+// Source directory for generated .proto files
+//sourceSets {
+//    main {
+//        proto {
+//            srcDirs("build/generated/source/proto/main/grpc")
+//            srcDirs("build/generated/source/proto/main/grpckt")
+//        }
+//    }
+//}

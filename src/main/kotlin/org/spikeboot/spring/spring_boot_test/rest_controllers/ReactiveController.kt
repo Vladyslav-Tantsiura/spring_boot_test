@@ -1,7 +1,7 @@
 package org.spikeboot.spring.spring_boot_test.rest_controllers
 
 import org.spikeboot.spring.spring_boot_test.mongo_documents.Book
-import org.spikeboot.spring.spring_boot_test.service.ReactiveBookService
+import org.spikeboot.spring.spring_boot_test.service.ReactiveMongoBookService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -12,16 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toFlux
-import reactor.kotlin.core.publisher.toMono
-import java.time.Duration
-import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/react/api")
 class ReactiveController(
     @Autowired
-    val reactiveBookService: ReactiveBookService
+    val reactiveMongoBookService: ReactiveMongoBookService
 ) {
 
     @RequestMapping("/test")
@@ -49,7 +45,7 @@ class ReactiveController(
     @GetMapping("/book")
     fun getAllBooks(): Flux<Book> {
 
-        return reactiveBookService.findAllBooksWithTemplate()
+        return reactiveMongoBookService.findAllBooksWithTemplate()
     }
 
 
@@ -75,11 +71,11 @@ class ReactiveController(
 //    }
 
     @GetMapping("/book/{id}")
-    fun getBookById(@PathVariable id: String) = reactiveBookService.findBookById(id)
+    fun getBookById(@PathVariable id: String) = reactiveMongoBookService.findBookById(id)
 
     @PostMapping("/book")
-    fun addNewBook(@RequestBody book: Book): Flux<Book> {
-        return reactiveBookService.insertBook(book)
+    fun addNewBook(@RequestBody book: Book): Mono<Book> {
+        return reactiveMongoBookService.insertBook(book)
     }
 
 

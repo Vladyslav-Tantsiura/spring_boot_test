@@ -40,7 +40,7 @@ public object BookKt {
     }
 
     /**
-     * <code>string bookName = 2;</code>
+     * <code>string book_name = 2;</code>
      */
     public var bookName: kotlin.String
       @JvmName("getBookName")
@@ -50,7 +50,7 @@ public object BookKt {
         _builder.setBookName(value)
       }
     /**
-     * <code>string bookName = 2;</code>
+     * <code>string book_name = 2;</code>
      */
     public fun clearBookName() {
       _builder.clearBookName()
