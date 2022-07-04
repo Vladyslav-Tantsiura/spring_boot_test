@@ -55,6 +55,14 @@ public final class ReactorBookMongoServiceGrpc {
             return com.salesforce.reactorgrpc.stub.ClientCalls.manyToMany(reactorRequest, delegateStub::getBooksByName, getCallOptions());
         }
 
+        public reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse> getBookById(reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest> reactorRequest) {
+            return com.salesforce.reactorgrpc.stub.ClientCalls.oneToOne(reactorRequest, delegateStub::getBookById, getCallOptions());
+        }
+
+        public reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.Book> findAllBooksWithWithAdded(reactor.core.publisher.Mono<com.google.protobuf.Empty> reactorRequest) {
+            return com.salesforce.reactorgrpc.stub.ClientCalls.oneToMany(reactorRequest, delegateStub::findAllBooksWithWithAdded, getCallOptions());
+        }
+
         public reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.SucceedResponse> addNewBook(org.spikeboot.grpc.BookOuterClass.Book reactorRequest) {
            return com.salesforce.reactorgrpc.stub.ClientCalls.oneToOne(reactor.core.publisher.Mono.just(reactorRequest), delegateStub::addNewBook, getCallOptions());
         }
@@ -65,6 +73,14 @@ public final class ReactorBookMongoServiceGrpc {
 
         public reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.Book> findAllBook(com.google.protobuf.Empty reactorRequest) {
            return com.salesforce.reactorgrpc.stub.ClientCalls.oneToMany(reactor.core.publisher.Mono.just(reactorRequest), delegateStub::findAllBook, getCallOptions());
+        }
+
+        public reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse> getBookById(org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest reactorRequest) {
+           return com.salesforce.reactorgrpc.stub.ClientCalls.oneToOne(reactor.core.publisher.Mono.just(reactorRequest), delegateStub::getBookById, getCallOptions());
+        }
+
+        public reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.Book> findAllBooksWithWithAdded(com.google.protobuf.Empty reactorRequest) {
+           return com.salesforce.reactorgrpc.stub.ClientCalls.oneToMany(reactor.core.publisher.Mono.just(reactorRequest), delegateStub::findAllBooksWithWithAdded, getCallOptions());
         }
 
     }
@@ -88,6 +104,14 @@ public final class ReactorBookMongoServiceGrpc {
         }
 
         public reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.Book> getBooksByName(reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest> request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        public reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse> getBookById(reactor.core.publisher.Mono<org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest> request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        public reactor.core.publisher.Flux<org.spikeboot.grpc.BookOuterClass.Book> findAllBooksWithWithAdded(reactor.core.publisher.Mono<com.google.protobuf.Empty> request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -128,6 +152,20 @@ public final class ReactorBookMongoServiceGrpc {
                                             org.spikeboot.grpc.BookOuterClass.GetBooksByNameRequest,
                                             org.spikeboot.grpc.BookOuterClass.Book>(
                                             this, METHODID_GET_BOOKS_BY_NAME)))
+                    .addMethod(
+                            org.spikeboot.grpc.BookMongoServiceGrpc.getGetBookByIdMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<
+                                            org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest,
+                                            org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse>(
+                                            this, METHODID_GET_BOOK_BY_ID)))
+                    .addMethod(
+                            org.spikeboot.grpc.BookMongoServiceGrpc.getFindAllBooksWithWithAddedMethod(),
+                            asyncServerStreamingCall(
+                                    new MethodHandlers<
+                                            com.google.protobuf.Empty,
+                                            org.spikeboot.grpc.BookOuterClass.Book>(
+                                            this, METHODID_FIND_ALL_BOOKS_WITH_WITH_ADDED)))
                     .build();
         }
 
@@ -142,6 +180,8 @@ public final class ReactorBookMongoServiceGrpc {
     public static final int METHODID_FIND_ALL_BOOK = 2;
     public static final int METHODID_SAVE_ALL_BOOKS = 3;
     public static final int METHODID_GET_BOOKS_BY_NAME = 4;
+    public static final int METHODID_GET_BOOK_BY_ID = 5;
+    public static final int METHODID_FIND_ALL_BOOKS_WITH_WITH_ADDED = 6;
 
     private static final class MethodHandlers<Req, Resp> implements
             io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -174,6 +214,16 @@ public final class ReactorBookMongoServiceGrpc {
                     com.salesforce.reactorgrpc.stub.ServerCalls.oneToMany((com.google.protobuf.Empty) request,
                             (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book>) responseObserver,
                             serviceImpl::findAllBook);
+                    break;
+                case METHODID_GET_BOOK_BY_ID:
+                    com.salesforce.reactorgrpc.stub.ServerCalls.oneToOne((org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest) request,
+                            (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse>) responseObserver,
+                            serviceImpl::getBookById);
+                    break;
+                case METHODID_FIND_ALL_BOOKS_WITH_WITH_ADDED:
+                    com.salesforce.reactorgrpc.stub.ServerCalls.oneToMany((com.google.protobuf.Empty) request,
+                            (io.grpc.stub.StreamObserver<org.spikeboot.grpc.BookOuterClass.Book>) responseObserver,
+                            serviceImpl::findAllBooksWithWithAdded);
                     break;
                 default:
                     throw new java.lang.AssertionError();

@@ -1,10 +1,12 @@
 package org.spikeboot.spring.spring_boot_test.service
 
+import io.nats.client.Connection
 import org.spikeboot.spring.spring_boot_test.mongo_documents.Book
 import org.spikeboot.spring.spring_boot_test.repositories.MongoBookRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.stereotype.Service
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 @Service

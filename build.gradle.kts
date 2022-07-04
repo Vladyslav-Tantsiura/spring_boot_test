@@ -43,6 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("org.projectlombok:lombok:1.18.22")
+    implementation("junit:junit:4.13.1")
     runtimeOnly("org.postgresql:postgresql")
 
 //	Tests dependencies
@@ -63,6 +64,16 @@ dependencies {
 //    Reactive gRPC
     implementation("com.salesforce.servicelibs:reactor-grpc:1.2.3")
     implementation("com.salesforce.servicelibs:reactor-grpc-stub:1.2.3")
+
+//    Reactive Redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
+
+//    NATS
+    implementation("io.nats:jnats:2.15.3")
+
+
+//    solve problem (https://stackoverflow.com/questions/65954571/spring-boot-2-4-2-dns-resolution-problem-at-start-on-apple-m1/65976398#65976398)
+    implementation("io.netty:netty-all:4.1.78.Final")
 
 }
 

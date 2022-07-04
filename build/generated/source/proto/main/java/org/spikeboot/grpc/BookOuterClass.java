@@ -2089,6 +2089,1442 @@ public final class BookOuterClass {
 
   }
 
+  public interface GetBookByIdRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.spikeboot.grpc.GetBookByIdRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+  }
+  /**
+   * Protobuf type {@code org.spikeboot.grpc.GetBookByIdRequest}
+   */
+  public static final class GetBookByIdRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:org.spikeboot.grpc.GetBookByIdRequest)
+      GetBookByIdRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetBookByIdRequest.newBuilder() to construct.
+    private GetBookByIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetBookByIdRequest() {
+      id_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetBookByIdRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetBookByIdRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.class, org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest)) {
+        return super.equals(obj);
+      }
+      org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest other = (org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.spikeboot.grpc.GetBookByIdRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.spikeboot.grpc.GetBookByIdRequest)
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.class, org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.Builder.class);
+      }
+
+      // Construct using org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest getDefaultInstanceForType() {
+        return org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest build() {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest buildPartial() {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest result = new org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest(this);
+        result.id_ = id_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest) {
+          return mergeFrom((org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest other) {
+        if (other == org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.spikeboot.grpc.GetBookByIdRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.spikeboot.grpc.GetBookByIdRequest)
+    private static final org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest();
+    }
+
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetBookByIdRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetBookByIdRequest>() {
+      @java.lang.Override
+      public GetBookByIdRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetBookByIdRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetBookByIdRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetBookByIdRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.spikeboot.grpc.BookOuterClass.GetBookByIdRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GetBookByIdResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:org.spikeboot.grpc.GetBookByIdResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string book_name = 2;</code>
+     * @return The bookName.
+     */
+    java.lang.String getBookName();
+    /**
+     * <code>string book_name = 2;</code>
+     * @return The bytes for bookName.
+     */
+    com.google.protobuf.ByteString
+        getBookNameBytes();
+
+    /**
+     * <code>string author = 3;</code>
+     * @return The author.
+     */
+    java.lang.String getAuthor();
+    /**
+     * <code>string author = 3;</code>
+     * @return The bytes for author.
+     */
+    com.google.protobuf.ByteString
+        getAuthorBytes();
+  }
+  /**
+   * Protobuf type {@code org.spikeboot.grpc.GetBookByIdResponse}
+   */
+  public static final class GetBookByIdResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:org.spikeboot.grpc.GetBookByIdResponse)
+      GetBookByIdResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetBookByIdResponse.newBuilder() to construct.
+    private GetBookByIdResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetBookByIdResponse() {
+      id_ = "";
+      bookName_ = "";
+      author_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetBookByIdResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetBookByIdResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              bookName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              author_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.class, org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BOOK_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object bookName_;
+    /**
+     * <code>string book_name = 2;</code>
+     * @return The bookName.
+     */
+    @java.lang.Override
+    public java.lang.String getBookName() {
+      java.lang.Object ref = bookName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        bookName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string book_name = 2;</code>
+     * @return The bytes for bookName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBookNameBytes() {
+      java.lang.Object ref = bookName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        bookName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHOR_FIELD_NUMBER = 3;
+    private volatile java.lang.Object author_;
+    /**
+     * <code>string author = 3;</code>
+     * @return The author.
+     */
+    @java.lang.Override
+    public java.lang.String getAuthor() {
+      java.lang.Object ref = author_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        author_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string author = 3;</code>
+     * @return The bytes for author.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAuthorBytes() {
+      java.lang.Object ref = author_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        author_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, bookName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(author_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, author_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, bookName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(author_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, author_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse)) {
+        return super.equals(obj);
+      }
+      org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse other = (org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getBookName()
+          .equals(other.getBookName())) return false;
+      if (!getAuthor()
+          .equals(other.getAuthor())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + BOOK_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBookName().hashCode();
+      hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.spikeboot.grpc.GetBookByIdResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:org.spikeboot.grpc.GetBookByIdResponse)
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.class, org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.Builder.class);
+      }
+
+      // Construct using org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        bookName_ = "";
+
+        author_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.spikeboot.grpc.BookOuterClass.internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse getDefaultInstanceForType() {
+        return org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse build() {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse buildPartial() {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse result = new org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse(this);
+        result.id_ = id_;
+        result.bookName_ = bookName_;
+        result.author_ = author_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse) {
+          return mergeFrom((org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse other) {
+        if (other == org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getBookName().isEmpty()) {
+          bookName_ = other.bookName_;
+          onChanged();
+        }
+        if (!other.getAuthor().isEmpty()) {
+          author_ = other.author_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object bookName_ = "";
+      /**
+       * <code>string book_name = 2;</code>
+       * @return The bookName.
+       */
+      public java.lang.String getBookName() {
+        java.lang.Object ref = bookName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          bookName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string book_name = 2;</code>
+       * @return The bytes for bookName.
+       */
+      public com.google.protobuf.ByteString
+          getBookNameBytes() {
+        java.lang.Object ref = bookName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          bookName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string book_name = 2;</code>
+       * @param value The bookName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBookName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        bookName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string book_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBookName() {
+        
+        bookName_ = getDefaultInstance().getBookName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string book_name = 2;</code>
+       * @param value The bytes for bookName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBookNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        bookName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object author_ = "";
+      /**
+       * <code>string author = 3;</code>
+       * @return The author.
+       */
+      public java.lang.String getAuthor() {
+        java.lang.Object ref = author_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          author_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string author = 3;</code>
+       * @return The bytes for author.
+       */
+      public com.google.protobuf.ByteString
+          getAuthorBytes() {
+        java.lang.Object ref = author_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          author_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string author = 3;</code>
+       * @param value The author to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthor(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        author_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string author = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthor() {
+        
+        author_ = getDefaultInstance().getAuthor();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string author = 3;</code>
+       * @param value The bytes for author to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        author_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:org.spikeboot.grpc.GetBookByIdResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:org.spikeboot.grpc.GetBookByIdResponse)
+    private static final org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse();
+    }
+
+    public static org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetBookByIdResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GetBookByIdResponse>() {
+      @java.lang.Override
+      public GetBookByIdResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetBookByIdResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetBookByIdResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetBookByIdResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.spikeboot.grpc.BookOuterClass.GetBookByIdResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_org_spikeboot_grpc_Book_descriptor;
   private static final 
@@ -2104,6 +3540,16 @@ public final class BookOuterClass {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_spikeboot_grpc_GetBooksByNameRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_spikeboot_grpc_GetBookByIdRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_spikeboot_grpc_GetBookByIdResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2118,17 +3564,24 @@ public final class BookOuterClass {
       "\t\022\021\n\tbook_name\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\"3\n\017" +
       "SucceedResponse\022\021\n\tsucceeded\030\001 \001(\010\022\r\n\005er" +
       "ror\030\002 \001(\t\"*\n\025GetBooksByNameRequest\022\021\n\tbo" +
-      "ok_name\030\001 \001(\t2\233\003\n\020BookMongoService\022K\n\nad" +
-      "dNewBook\022\030.org.spikeboot.grpc.Book\032#.org" +
-      ".spikeboot.grpc.SucceedResponse\022K\n\nexist" +
-      "sBook\022\030.org.spikeboot.grpc.Book\032#.org.sp" +
-      "ikeboot.grpc.SucceedResponse\022A\n\013findAllB" +
-      "ook\022\026.google.protobuf.Empty\032\030.org.spikeb" +
-      "oot.grpc.Book0\001\022O\n\014saveAllBooks\022\030.org.sp" +
-      "ikeboot.grpc.Book\032#.org.spikeboot.grpc.S" +
-      "ucceedResponse(\001\022Y\n\016getBooksByName\022).org" +
-      ".spikeboot.grpc.GetBooksByNameRequest\032\030." +
-      "org.spikeboot.grpc.Book(\0010\001b\006proto3"
+      "ok_name\030\001 \001(\t\" \n\022GetBookByIdRequest\022\n\n\002i" +
+      "d\030\001 \001(\t\"D\n\023GetBookByIdResponse\022\n\n\002id\030\001 \001" +
+      "(\t\022\021\n\tbook_name\030\002 \001(\t\022\016\n\006author\030\003 \001(\t2\314\004" +
+      "\n\020BookMongoService\022K\n\naddNewBook\022\030.org.s" +
+      "pikeboot.grpc.Book\032#.org.spikeboot.grpc." +
+      "SucceedResponse\022K\n\nexistsBook\022\030.org.spik" +
+      "eboot.grpc.Book\032#.org.spikeboot.grpc.Suc" +
+      "ceedResponse\022A\n\013findAllBook\022\026.google.pro" +
+      "tobuf.Empty\032\030.org.spikeboot.grpc.Book0\001\022" +
+      "O\n\014saveAllBooks\022\030.org.spikeboot.grpc.Boo" +
+      "k\032#.org.spikeboot.grpc.SucceedResponse(\001" +
+      "\022Y\n\016getBooksByName\022).org.spikeboot.grpc." +
+      "GetBooksByNameRequest\032\030.org.spikeboot.gr" +
+      "pc.Book(\0010\001\022^\n\013getBookById\022&.org.spikebo" +
+      "ot.grpc.GetBookByIdRequest\032\'.org.spikebo" +
+      "ot.grpc.GetBookByIdResponse\022O\n\031findAllBo" +
+      "oksWithWithAdded\022\026.google.protobuf.Empty" +
+      "\032\030.org.spikeboot.grpc.Book0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2153,6 +3606,18 @@ public final class BookOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_spikeboot_grpc_GetBooksByNameRequest_descriptor,
         new java.lang.String[] { "BookName", });
+    internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_org_spikeboot_grpc_GetBookByIdRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_spikeboot_grpc_GetBookByIdRequest_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_org_spikeboot_grpc_GetBookByIdResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_spikeboot_grpc_GetBookByIdResponse_descriptor,
+        new java.lang.String[] { "Id", "BookName", "Author", });
     com.google.protobuf.EmptyProto.getDescriptor();
   }
 

@@ -15,9 +15,22 @@ message SucceedResponse{
   string error = 2;
 }
 
+
 message GetBooksByNameRequest{
   string book_name = 1;
 }
+
+
+message GetBookByIdRequest{
+  string id = 1;
+}
+message GetBookByIdResponse{
+  string id = 1;
+  string book_name = 2;
+  string author = 3;
+}
+
+
 
 
 service BookMongoService{
@@ -26,4 +39,6 @@ service BookMongoService{
   rpc findAllBook(google.protobuf.Empty) returns (stream Book);
   rpc saveAllBooks(stream Book) returns (SucceedResponse);
   rpc getBooksByName(stream GetBooksByNameRequest) returns (stream Book);
+  rpc getBookById(GetBookByIdRequest) returns (GetBookByIdResponse);
+  rpc findAllBooksWithWithAdded(google.protobuf.Empty) returns (stream Book);
 }
